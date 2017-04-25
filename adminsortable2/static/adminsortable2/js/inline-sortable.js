@@ -12,6 +12,7 @@ jQuery(function($) {
 			scroll: true,
 			cursor: 'ns-resize',
 			containment: $(this).find('tbody'),
+			tolerance: 'pointer',
 			stop: function(event, dragged_rows) {
 				var $result_list = $(this);
 				$result_list.find('tbody tr').each(function(index) {
@@ -32,6 +33,7 @@ jQuery(function($) {
 			scroll: true,
 			cursor: 'ns-resize',
 			containment: $(this),
+			tolerance: 'pointer',
 			stop: function(event, dragged_rows) {
 				var $result_list = $(this);
 				$result_list.find('div.inline-related.has_original').each(function(index) {
