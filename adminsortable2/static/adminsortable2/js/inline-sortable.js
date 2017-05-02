@@ -11,9 +11,7 @@ jQuery(function($) {
 			axis: 'y',
 			scroll: true,
 			cursor: 'ns-resize',
-			containment: $(this).find('tbody'),
 			tolerance: 'pointer',
-			placeholder: 'drag-drop-place-holder',
 			stop: function(event, dragged_rows) {
 				var $result_list = $(this);
 				$result_list.find('tbody tr').each(function(index) {
@@ -22,6 +20,9 @@ jQuery(function($) {
 				$result_list.find('tbody tr.has_original').each(function(index) {
 					$(this).find(order_input_field).val(index + 1);
 				});
+			},
+			start: function(e, ui){
+				ui.placeholder.height(ui.item.height());
 			}
 		});
 		if (tabular_inlines.length)
@@ -33,14 +34,15 @@ jQuery(function($) {
 			axis: 'y',
 			scroll: true,
 			cursor: 'ns-resize',
-			containment: $(this),
 			tolerance: 'pointer',
-			placeholder: 'drag-drop-place-holder',
 			stop: function(event, dragged_rows) {
 				var $result_list = $(this);
 				$result_list.find('div.inline-related.has_original').each(function(index) {
 					$(this).find(order_input_field).val(index + 1);
 				});
+			},
+			start: function(e, ui){
+				ui.placeholder.height(ui.item.height());
 			}
 		});
 	});
