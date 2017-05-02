@@ -11,6 +11,7 @@ jQuery(function($) {
 			axis: 'y',
 			scroll: true,
 			cursor: 'ns-resize',
+			containment: $(this).find('tbody'),
 			tolerance: 'pointer',
 			stop: function(event, dragged_rows) {
 				var $result_list = $(this);
@@ -23,6 +24,9 @@ jQuery(function($) {
 			},
 			start: function(e, ui){
 				ui.placeholder.height(ui.item.height());
+				var sort = $(this).sortable('instance');
+				sort.containment[3] += ui.helper.height() * 1.5 - sort.offset.click.top;
+				sort.containment[1] -= sort.offset.click.top;
 			}
 		});
 		if (tabular_inlines.length)
