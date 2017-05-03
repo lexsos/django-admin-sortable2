@@ -25,8 +25,8 @@ jQuery(function($) {
 			start: function(e, ui){
 				ui.placeholder.height(ui.item.height());
 				var sort = $(this).sortable('instance');
-				sort.containment[3] += ui.helper.height() * 1.5 - sort.offset.click.top;
-				sort.containment[1] -= sort.offset.click.top;
+				sort.containment[3] += ui.helper.height() * 2 - sort.offset.click.top;
+				sort.containment[1] -= sort.offset.click.top + ui.helper.height();
 			}
 		});
 		if (tabular_inlines.length)
