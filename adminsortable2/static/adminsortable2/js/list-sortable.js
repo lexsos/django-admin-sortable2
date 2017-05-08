@@ -35,12 +35,16 @@ jQuery(function($) {
 				$(dragged_rows.item.context.childNodes[index]).width($(this).width() - 10);
 			});
 			startindex = dragged_rows.item.index();
+			dragged_rows.placeholder.height(dragged_rows.item.height());
+			var sort = $(this).sortable('instance');
+			sort.containment[3] += dragged_rows.helper.height() - sort.offset.click.top;
+			sort.containment[1] -= sort.offset.click.top;
 		},
 		stop: function(event, dragged_rows) {
 			$(this).find('thead tr th').each(function(index) {
 				$(dragged_rows.item.context.childNodes[index]).width('auto');
 			});
-			
+
 			var $result_list = $(this);
 			$result_list.find('tbody tr').each(function(index) {
 				$(this).removeClass('row1 row2').addClass(index % 2 ? 'row2' : 'row1');
